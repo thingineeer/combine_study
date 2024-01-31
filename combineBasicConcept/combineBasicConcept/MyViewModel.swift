@@ -13,7 +13,16 @@ class MyViewModel {
     
     // 구독 가능하게 설정
     
-    @Published var passwordInput: String = ""
-    @Published var passwordConfirm: String = ""
+    @Published var passwordInput: String = "" {
+        didSet {
+            print("passwordInput = \(passwordInput)")
+        }
+    }
+    @Published var passwordConfirm: String = "" {
+        didSet {
+            print("passwordConfirm = \(passwordConfirm)")
+        }
+    }
+    
     
 }
