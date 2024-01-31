@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class ViewController: UIViewController {
     
@@ -43,6 +44,8 @@ class ViewController: UIViewController {
         return stackView
     }()
     
+    private var cancelBag = Set<AnyCancellable>()
+    
     var viewModel: MyViewModel!
     
     override func viewDidLoad() {
@@ -74,11 +77,34 @@ class ViewController: UIViewController {
     
     private func setBind() {
         viewModel = MyViewModel()
+        
+        passwordTextField
+            .myTextPublisher
+            .receive(on: DispatchQueue.main) /// 스레드 - 메인
+            .assign(to: \.passwordInput, on: viewModel) /// 구독
+            .store(in: &cancelBag)
+        
+        passwordCheckTextField
+            .myTextPublisher
+            .print()
+            .receive(on: DispatchQueue.main) /// 스레드 - 메인
+            .assign(to: \.passwordConfirm, on: viewModel) /// 구독
+            .store(in: &cancelBag)
     }
     
 }
 
-extension UITextView {
+extension UITextField {
+    
+    var myTextPublisher: AnyPublisher<String, Never> {
+        
+        NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification, object: self)
+            .compactMap { $0.object as? UITextField } /// compactMap으로 UITextField 로 캐스팅
+            .map { $0.text ?? "text"} /// 거기서 text -  String 을 가져온다
+            .eraseToAnyPublisher()
+        
+    }
+    
     
 }
 
