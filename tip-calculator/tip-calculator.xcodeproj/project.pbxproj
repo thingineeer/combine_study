@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710309592B8A5ABE0077EE17 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710309582B8A5ABE0077EE17 /* ThemeColor.swift */; };
+		7103095B2B8A5ACA0077EE17 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103095A2B8A5ACA0077EE17 /* ThemeFont.swift */; };
+		7103095E2B8A5AFB0077EE17 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103095D2B8A5AFB0077EE17 /* UIColor+.swift */; };
+		710309612B8A61FA0077EE17 /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710309602B8A61FA0077EE17 /* LabelFactory.swift */; };
 		71B0FF4C2B8888710090058A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4B2B8888710090058A /* AppDelegate.swift */; };
 		71B0FF4E2B8888710090058A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4D2B8888710090058A /* SceneDelegate.swift */; };
 		71B0FF502B8888710090058A /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4F2B8888710090058A /* CalculatorVC.swift */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		710309582B8A5ABE0077EE17 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		7103095A2B8A5ACA0077EE17 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
+		7103095D2B8A5AFB0077EE17 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		710309602B8A61FA0077EE17 /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		71B0FF482B8888710090058A /* tip-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tip-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B0FF4B2B8888710090058A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71B0FF4D2B8888710090058A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +102,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710309572B8A5AA70077EE17 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				710309582B8A5ABE0077EE17 /* ThemeColor.swift */,
+				7103095A2B8A5ACA0077EE17 /* ThemeFont.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		7103095C2B8A5AE60077EE17 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				7103095D2B8A5AFB0077EE17 /* UIColor+.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		7103095F2B8A61E40077EE17 /* factory */ = {
+			isa = PBXGroup;
+			children = (
+				710309602B8A61FA0077EE17 /* LabelFactory.swift */,
+			);
+			path = factory;
+			sourceTree = "<group>";
+		};
 		71B0FF3F2B8888710090058A = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +151,9 @@
 		71B0FF4A2B8888710090058A /* tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7103095F2B8A61E40077EE17 /* factory */,
+				7103095C2B8A5AE60077EE17 /* extension */,
+				710309572B8A5AA70077EE17 /* config */,
 				71BCAD5F2B8A4E4C001EF896 /* View */,
 				71B0FF4B2B8888710090058A /* AppDelegate.swift */,
 				71B0FF4D2B8888710090058A /* SceneDelegate.swift */,
@@ -313,10 +349,14 @@
 			files = (
 				71B0FF502B8888710090058A /* CalculatorVC.swift in Sources */,
 				71BCAD612B8A4E65001EF896 /* LogoView.swift in Sources */,
+				710309592B8A5ABE0077EE17 /* ThemeColor.swift in Sources */,
 				71BCAD652B8A4FA5001EF896 /* BillInputView.swift in Sources */,
+				7103095E2B8A5AFB0077EE17 /* UIColor+.swift in Sources */,
 				71BCAD632B8A4F92001EF896 /* ResultView.swift in Sources */,
 				71B0FF4C2B8888710090058A /* AppDelegate.swift in Sources */,
+				7103095B2B8A5ACA0077EE17 /* ThemeFont.swift in Sources */,
 				71B0FF4E2B8888710090058A /* SceneDelegate.swift in Sources */,
+				710309612B8A61FA0077EE17 /* LabelFactory.swift in Sources */,
 				71BCAD692B8A4FE1001EF896 /* SplitInputView.swift in Sources */,
 				71BCAD672B8A4FC7001EF896 /* TipInputView.swift in Sources */,
 			);
