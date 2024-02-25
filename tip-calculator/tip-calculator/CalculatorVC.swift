@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 
+import Combine
+
 class CalculatorVC: UIViewController {
     
     private let logoView = LogoView()
@@ -31,11 +33,29 @@ class CalculatorVC: UIViewController {
         return stackView
     }()
     
+    private let vm = CalculatorVM()
+    
+    private var cancelBag = CancelBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setLayout()
+        bind()
+    }
+    
+    private func bind() {
+        let input = CalculatorVM.Input(
+            billPublisher: Just(10.0).eraseToAnyPublisher(),
+            tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
+            splitPublisher: Just(5).eraseToAnyPublisher()
+        )
+        
+        let output = vm.transform(input: input)
+        
+        output.updateViewPublisher.sink { result in
+            print(result)
+        }.store(in: cancelBag)
     }
     
     private func setLayout() {
