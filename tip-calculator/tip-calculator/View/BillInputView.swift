@@ -7,6 +7,9 @@
 
 import UIKit
 
+import Combine
+import CombineCocoa
+
 class BillInputView: UIView {
     
     private let headerView: HeaderView = {
@@ -55,13 +58,27 @@ class BillInputView: UIView {
         return textField
     }()
     
+    private var cancelBag = CancelBag()
+    
+    private let billSubject: PassthroughSubject<Double, Never> = .init()
+    var valuePublisher: AnyPublisher<Double, Never> {
+        return billSubject.eraseToAnyPublisher()
+    }
+    
     init() {
         super.init(frame: .zero)
         setLayout()
+        observe()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func observe() {
+        textField.textPublisher.sink { [unowned self] text in
+            billSubject.send(text?.doubleValue ?? 0)
+        }.store(in: cancelBag)
     }
     
     
