@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 import Combine
+import CombineCocoa
 
 class CalculatorVC: UIViewController {
     
@@ -45,17 +46,19 @@ class CalculatorVC: UIViewController {
     }
     
     private func bind() {
+//        
+//        billInputView.valuePublisher.sink { bill in
+//            print("bill= \(bill)")
+//        }.store(in: cancelBag)
+        
         let input = CalculatorVM.Input(
-            billPublisher: Just(10.0).eraseToAnyPublisher(),
-            tipPublisher: Just(.tenPercent).eraseToAnyPublisher(),
+            billPublisher: billInputView.valuePublisher,
+            tipPublisher: tipInputView.valuePublisher,
             splitPublisher: Just(5).eraseToAnyPublisher()
         )
         
         let output = vm.transform(input: input)
-        
-        output.updateViewPublisher.sink { result in
-            print(result)
-        }.store(in: cancelBag)
+          
     }
     
     private func setLayout() {

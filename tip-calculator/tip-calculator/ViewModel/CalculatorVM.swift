@@ -20,6 +20,9 @@ class CalculatorVM {
         let updateViewPublisher: AnyPublisher<Result, Never>
     }
     
+    private var cancelBag = CancelBag()
+    
+    
     func transform(input: Input) -> Output {
         
         let result = Result(
