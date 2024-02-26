@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class SplitInputView: UIView {
     
@@ -20,6 +21,10 @@ class SplitInputView: UIView {
             text: "-",
             corners: [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         )
+        button.tapPublisher.flatMap { [unowned self] _ in
+            Just(splitSubject.value == 1 ? 1 : splitSubject.value - 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: cancelBag)
         return button
     }()
     
@@ -28,6 +33,10 @@ class SplitInputView: UIView {
             text: "+",
             corners: [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         )
+        button.tapPublisher.flatMap { [unowned self] _ in
+            Just(splitSubject.value + 1)
+        }.assign(to: \.value, on: splitSubject)
+            .store(in: cancelBag)
         return button
     }()
     
@@ -51,15 +60,28 @@ class SplitInputView: UIView {
         return stackView
     }()
     
+    private let splitSubject: CurrentValueSubject<Int, Never> = .init(1)
+    var valuePublisher: AnyPublisher<Int, Never> {
+        return splitSubject.removeDuplicates().eraseToAnyPublisher()
+    }
+    
+    private var cancelBag = CancelBag()
+    
     init() {
         super.init(frame: .zero)
         setLayout()
+        observe()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func observe() {
+        splitSubject.sink { [unowned self] quantity in
+            quantityLabel.text = "\(quantity)"
+        }.store(in: cancelBag)
+    }
     
     private func setLayout() {
         addSubviews(headerView, stackView)
