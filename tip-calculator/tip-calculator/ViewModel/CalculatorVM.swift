@@ -25,6 +25,14 @@ class CalculatorVM {
     
     func transform(input: Input) -> Output {
         
+        input.tipPublisher.sink { tip in
+            print(tip)
+        }.store(in: cancelBag)
+        
+        input.splitPublisher.sink { value in
+            print(value)
+        }.store(in: cancelBag)
+        
         let result = Result(
             amountPerPerson: 1000.0,
             totalBill: 500.0,
