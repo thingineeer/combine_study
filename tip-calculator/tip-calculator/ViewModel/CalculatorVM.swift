@@ -25,21 +25,38 @@ class CalculatorVM {
     
     func transform(input: Input) -> Output {
         
-        input.tipPublisher.sink { tip in
-            print(tip)
-        }.store(in: cancelBag)
+        let updateViewPublisher = Publishers.CombineLatest3(
+            input.billPublisher,
+            input.splitPublisher,
+            input.tipPublisher
+        ).flatMap { [unowned self] (bill, split, tip) in
+            let totalTip = getTipAmount(bill: bill, tip: tip)
+            let totalBill = bill + totalTip
+            let amountPerPerson = totalBill / Double(split)
+            
+            let result = Result(
+                amountPerPerson: amountPerPerson,
+                totalBill: totalBill,
+                totalTip: totalTip
+            )
+            return Just(result)
+        }.eraseToAnyPublisher()
         
-        input.splitPublisher.sink { value in
-            print(value)
-        }.store(in: cancelBag)
-        
-        let result = Result(
-            amountPerPerson: 1000.0,
-            totalBill: 500.0,
-            totalTip: 150.0
-        )
-        return Output(
-            updateViewPublisher: Just(result).eraseToAnyPublisher()
-        )
+        return Output(updateViewPublisher: updateViewPublisher)
+    }
+    
+    private func getTipAmount(bill: Double, tip: Tip) -> Double {
+        switch  tip {
+        case .none:
+            return 0
+        case .tenPercent:
+            return bill * 0.1
+        case .fifteenPercent:
+            return bill * 0.15
+        case .twentyPercent:
+            return bill * 0.2
+        case .custom(let value):
+            return Double(value)
+        }
     }
 }
