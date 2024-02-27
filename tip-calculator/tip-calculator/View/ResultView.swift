@@ -90,8 +90,8 @@ class ResultView: UIView {
         )
         amountPerPersonLabel.attributedText = text
         
-        totalBillView.configure(text: String(result.totalBill))
-        totalTipView.configure(text: String(result.totalTip))
+        totalBillView.configure(text: result.totalBill.currencyFormatted)
+        totalTipView.configure(text: result.totalTip.currencyFormatted)
     }
     
     private func setLayout() {

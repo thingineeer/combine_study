@@ -56,7 +56,7 @@ class AmountView: UIView {
     
     func configure(text: String) {
         let text = NSMutableAttributedString(
-            string: "$\(text)",
+            string: text,
             attributes: [.font: ThemeFont.bold(ofSize: 24)]
         )
         text.addAttributes(

@@ -110,6 +110,10 @@ class TipInputView: UIView {
     
     // MARK: - Methods
     
+    func reset() {
+        tipSubject.send(.none)
+    }
+    
     private func resetView() {
         [tenPercentTipButton,
          fiftenPercentTipButton,

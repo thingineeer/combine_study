@@ -21,6 +21,8 @@
 		710309732B8B62540077EE17 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710309722B8B62540077EE17 /* String+.swift */; };
 		710309752B8B748B0077EE17 /* UIRespoder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710309742B8B748B0077EE17 /* UIRespoder+.swift */; };
 		710309772B8DD6AE0077EE17 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710309762B8DD6AE0077EE17 /* Double+.swift */; };
+		7103097A2B8DE4D10077EE17 /* click.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 710309792B8DE4D10077EE17 /* click.m4a */; };
+		7103097D2B8DE5600077EE17 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103097C2B8DE5600077EE17 /* AudioPlayerService.swift */; };
 		71B0FF4C2B8888710090058A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4B2B8888710090058A /* AppDelegate.swift */; };
 		71B0FF4E2B8888710090058A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4D2B8888710090058A /* SceneDelegate.swift */; };
 		71B0FF502B8888710090058A /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0FF4F2B8888710090058A /* CalculatorVC.swift */; };
@@ -73,6 +75,8 @@
 		710309722B8B62540077EE17 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		710309742B8B748B0077EE17 /* UIRespoder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRespoder+.swift"; sourceTree = "<group>"; };
 		710309762B8DD6AE0077EE17 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		710309792B8DE4D10077EE17 /* click.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = click.m4a; sourceTree = "<group>"; };
+		7103097C2B8DE5600077EE17 /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		71B0FF482B8888710090058A /* tip-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tip-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71B0FF4B2B8888710090058A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71B0FF4D2B8888710090058A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +173,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		710309782B8DE49C0077EE17 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				710309792B8DE4D10077EE17 /* click.m4a */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		7103097B2B8DE54A0077EE17 /* sevice */ = {
+			isa = PBXGroup;
+			children = (
+				7103097C2B8DE5600077EE17 /* AudioPlayerService.swift */,
+			);
+			path = sevice;
+			sourceTree = "<group>";
+		};
 		71B0FF3F2B8888710090058A = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +213,8 @@
 		71B0FF4A2B8888710090058A /* tip-calculator */ = {
 			isa = PBXGroup;
 			children = (
+				7103097B2B8DE54A0077EE17 /* sevice */,
+				710309782B8DE49C0077EE17 /* resource */,
 				7103096B2B8B56B70077EE17 /* ViewModel */,
 				710309662B8B39720077EE17 /* model */,
 				7103095F2B8A61E40077EE17 /* factory */,
@@ -367,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7103097A2B8DE4D10077EE17 /* click.m4a in Resources */,
 				71B0FF582B8888720090058A /* LaunchScreen.storyboard in Resources */,
 				71B0FF552B8888720090058A /* Assets.xcassets in Resources */,
 			);
@@ -405,6 +428,7 @@
 				71BCAD652B8A4FA5001EF896 /* BillInputView.swift in Sources */,
 				7103095E2B8A5AFB0077EE17 /* UIColor+.swift in Sources */,
 				71BCAD632B8A4F92001EF896 /* ResultView.swift in Sources */,
+				7103097D2B8DE5600077EE17 /* AudioPlayerService.swift in Sources */,
 				71B0FF4C2B8888710090058A /* AppDelegate.swift in Sources */,
 				7103095B2B8A5ACA0077EE17 /* ThemeFont.swift in Sources */,
 				71B0FF4E2B8888710090058A /* SceneDelegate.swift in Sources */,
